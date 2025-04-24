@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Dalcomsoft Redirect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+    }
+    .logo {
+      width: 160px;
+      margin-bottom: 30px;
+    }
+    .message {
+      font-size: 1.3rem;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .sub {
+      font-size: 0.95rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <img class="logo" src="https://superstarstore.net/images/logo_black.png" alt="Dalcomsoft Logo">
+  <div class="message">Dalcomsoft로 이동 중입니다...</div>
+  <div class="sub">기기에 따라 자동으로 연결됩니다</div>
+
+  <script>
+    window.onload = function () {
+      setTimeout(function () {
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        const platform = navigator.platform ? navigator.platform.toLowerCase() : "";
+
+        if (/android/i.test(userAgent)) {
+          // Android (모바일 또는 에뮬레이터)
+          window.location.href = "https://play.google.com/store/apps/dev?id=4664789775367837521&hl=ko";
+        } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+          // iOS (iPhone, iPad 등)
+          window.location.href = "https://apps.apple.com/kr/developer/dalcomsoft-inc/id890937535";
+        } else if (platform.includes("mac")) {
+          // macOS (데스크탑)
+          window.location.href = "https://apps.apple.com/kr/developer/dalcomsoft-inc/id890937535";
+        } else {
+          // Windows, Linux, 기타
+          window.location.href = "https://play.google.com/store/apps/dev?id=4664789775367837521&hl=ko";
+        }
+      }, 500); // 0.5초 후 리디렉션
+    };
+  </script>
+</body>
+</html>
